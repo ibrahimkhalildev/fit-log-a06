@@ -31,7 +31,7 @@ export default function Navbar () {
             Workout
           </Link>
           <Link
-            href='/'
+            href='/my-plan'
             className='rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold text-neutral-300 transition hover:text-[#ccff00]'
           >
             My Plan
