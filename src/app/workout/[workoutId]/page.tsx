@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { FaCalendarPlus, FaRegBookmark } from 'react-icons/fa'
+import WorkoutActionButtons from './WorkoutActionButtons'
 
 interface Workout {
   id: number | string
@@ -130,24 +130,8 @@ export default async function WorkoutDetailsPage ({ params }: PageProps) {
                 ))}
               </ol>
             </div>
-
-            <div className='mt-8 flex flex-wrap items-center gap-3'>
-              <button
-                type='button'
-                className='btn border-none bg-[#ccff00] px-5 text-xs font-bold text-black hover:bg-[#b5e600] rounded-xl transition flex items-center gap-2'
-              >
-                <FaCalendarPlus className='text-sm' />
-                Add to today&apos;s plan
-              </button>
-
-              <button
-                type='button'
-                className='btn btn-outline border-neutral-800 bg-[#13161f] px-5 text-xs font-bold text-neutral-200 hover:border-neutral-700 hover:bg-neutral-800 rounded-xl transition flex items-center gap-2'
-              >
-                <FaRegBookmark className='text-sm' />
-                Save for later
-              </button>
-            </div>
+            
+            <WorkoutActionButtons workout={workout} />
           </div>
         </div>
       </main>
