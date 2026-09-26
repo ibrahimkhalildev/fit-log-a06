@@ -23,7 +23,7 @@ interface Workout {
 
 async function getWorkout (id: string): Promise<Workout | null> {
   try {
-    const res = await fetch('https://api.abcz.workers.dev/api/fitlog', {
+    const res = await fetch('https://api.api-store.workers.dev/api/fitlog', {
       cache: 'no-store'
     })
 
@@ -130,7 +130,7 @@ export default async function WorkoutDetailsPage ({ params }: PageProps) {
                 ))}
               </ol>
             </div>
-            
+
             <WorkoutActionButtons workout={workout} />
           </div>
         </div>

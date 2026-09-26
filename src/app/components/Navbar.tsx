@@ -46,7 +46,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/my-plan"
+            href="/my-plan?tab=plan"
             className="flex items-center gap-1.5 text-xs font-semibold text-neutral-300 transition hover:opacity-90"
           >
             <span>Plan</span>
@@ -56,7 +56,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/my-plan"
+            href="/my-plan?tab=saved"
             className="flex items-center gap-1.5 text-xs font-semibold text-neutral-300 transition hover:opacity-90"
           >
             <span>Saved</span>
