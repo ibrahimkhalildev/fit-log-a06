@@ -6,7 +6,7 @@ import { FaRegClock, FaFire, FaStar } from 'react-icons/fa'
 interface Workout {
   id: string | number
   name: string
-  category: string[] | string
+  muscleGroups: string[] | string
   equipment: string
   duration: number
   calories: number
@@ -50,9 +50,9 @@ const WorkOutLibrary = async () => {
 
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
         {workoutData.map((workout, ind) => {
-          const categories = Array.isArray(workout.category)
-            ? workout.category
-            : [workout.category]
+          const categories = Array.isArray(workout.muscleGroups)
+            ? workout.muscleGroups
+            : [workout.muscleGroups]
 
           return (
             <Link

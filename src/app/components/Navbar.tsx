@@ -28,7 +28,7 @@ export default function Navbar () {
             href='/'
             className='rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold text-neutral-300 transition hover:text-[#ccff00]'
           >
-            Workouts
+            Workout
           </Link>
           <Link
             href='/'
@@ -40,7 +40,7 @@ export default function Navbar () {
 
         <div className='flex items-center gap-3'>
           <Link
-            href='/'
+            href='/my-plan'
             className='flex items-center gap-1.5 text-xs font-semibold text-neutral-300 transition hover:opacity-90'
           >
             <span>Plan</span>
@@ -50,7 +50,7 @@ export default function Navbar () {
           </Link>
 
           <Link
-            href='/'
+            href='/my-plan'
             className='flex items-center gap-1.5 text-xs font-semibold text-neutral-300 transition hover:opacity-90'
           >
             <span>Saved</span>
