@@ -1,14 +1,12 @@
-import React from 'react'
-import Banner from './components/homepage/Banner'
-import WorkOutLibrary from './components/homepage/WorkOutLibrary'
+import React from 'react';
+import Banner from './components/homepage/Banner';
+import WorkOutLibrary from './components/homepage/WorkOutLibrary';
 
-const Page = () => {
+export default function HomePage() {
   return (
-    <div>
-      <Banner></Banner>
-      <WorkOutLibrary></WorkOutLibrary>
+    <div className="min-h-screen bg-[#0c0e12]">
+      <Banner />
+      <WorkOutLibrary />
     </div>
-  )
+  );
 }
-
-export default Page

@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏋️ FitLog — Train With Intent. Log Every Set.
 
-## Getting Started
+FitLog is a modern, high-contrast dark-mode fitness tracking web application built with Next.js (App Router). It streamlines workout planning by offering a curated exercise catalog, an enforced 5-lift daily routine split, a dedicated saved workouts collection, and live-updating metric calculations across exercises, training minutes, and caloric burn.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Framework:** Next.js (App Router) ⚡
+- **Frontend Library:** React ⚛️
+- **Language:** TypeScript 🔷
+- **Styling:** Tailwind CSS 🎨
+- **State Management:** React Context API (`FitLogContext`) + LocalStorage 💾
+- **Feedback & Notifications:** React Toastify 🔔
+- **Iconography:** React Icons (`fa`) 🔣
+- **Data Source:** Cloudflare Workers REST API ☁️
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ 5 Key Features
 
-## Learn More
+1. 📚 **Curated Workout Library with Skeleton States**  
+   Access a library of lifts covering every major muscle group with details on duration, equipment, calories burned, and user ratings. Integrated client-side data fetching ensures instant page loads with smooth pulse skeleton loading states.
 
-To learn more about Next.js, take a look at the following resources:
+2. 🎯 **Structured Daily Plan (5-Lift Cap)**  
+   Enforce training discipline with a strict limit of five exercises per day. Easily track active routines, remove completed items, or mark lifts as completed with one click.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. 🔖 **Dedicated Saved Workouts Vault**  
+   Bookmark go-to routines for quick future access. Seamlessly switch between daily plans and saved lists via synchronized navigation badges and deep URL query parameters (`?tab=plan` and `?tab=saved`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. 📊 **Dynamic Real-Time Metrics & Multi-Criteria Sorting**  
+   The dashboard summary automatically computes total exercises, minutes, and calories based on the currently selected tab. Workouts can be sorted dynamically by duration, calories (low to high), or ratings.
 
-## Deploy on Vercel
+5. ⚡ **Persistent Storage & Resilient Navigation**  
+   All active plans and saved workouts persist across page refreshes via browser `localStorage`. Built with proper suspense boundaries and static-ready routing to ensure smooth reloads after production deployment and a custom 404 handler for missing routes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Design System & Theme
+
+Designed specifically for clear readability under gym lighting:
+
+- 🖤 **Background Canvas:** `#0c0e12`
+- 📦 **Card & Component Surface:** `#13161f`
+- 🟢 **Primary Accent:** Neon Lime (`#ccff00`)
+- 🌿 **Active Tab/Pill Background:** `#19270e`
+- 🔘 **Borders & Dividers:** Neutral Dark (`#262626` / `border-neutral-800`)
+
+---
+
+## 🌐 API Reference
+
+FitLog fetches workout routines from a remote REST API:
+
+- **Endpoint:** `GET https://api.api-store.workers.dev/api/fitlog`
+- **Response Format:** JSON array containing workout objects (`id`, `name`, `muscleGroups`, `equipment`, `duration`, `calories`, `rating`, `image`).
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Ensure you have [Node.js](https://nodejs.org/) (version 18.18 or later) installed.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/fitlog.git](https://github.com/your-username/fitlog.git)
+   cd fitlog
