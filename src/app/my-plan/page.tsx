@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import {
   FaChevronDown,
   FaRegClock,
@@ -18,34 +18,28 @@ import { useFitLog, Workout } from '../../context/FitLogContext'
 type SortOption = 'Duration' | 'Calories' | 'Rating'
 
 function MyPlanContent () {
+  const router = useRouter()
   const { todayPlan, savedWorkouts, removeFromPlan, removeFromSaved } =
     useFitLog()
   const searchParams = useSearchParams()
   const tabQuery = searchParams.get('tab')
 
-  const [activeTab, setActiveTab] = useState<'plan' | 'saved'>('plan')
+  const activeTab: 'plan' | 'saved' = tabQuery === 'saved' ? 'saved' : 'plan'
+
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [sortBy, setSortBy] = useState<SortOption>('Duration')
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (tabQuery === 'saved') {
-        setActiveTab('saved')
-      } else if (tabQuery === 'plan') {
-        setActiveTab('plan')
-      }
-    }, 0)
-
-    return () => clearTimeout(timer)
-  }, [tabQuery])
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 200)
+    }, 350)
 
     return () => clearTimeout(timer)
   }, [])
+
+  const handleTabChange = (tab: 'plan' | 'saved') => {
+    router.replace(`/my-plan?tab=${tab}`, { scroll: false })
+  }
 
   const currentTabList = useMemo(() => {
     return activeTab === 'plan' ? todayPlan : savedWorkouts
@@ -148,7 +142,7 @@ function MyPlanContent () {
           <div className='inline-flex rounded-xl border border-neutral-800 bg-[#13161f] p-1'>
             <button
               type='button'
-              onClick={() => setActiveTab('plan')}
+              onClick={() => handleTabChange('plan')}
               className={`rounded-lg px-5 py-2 text-xs font-bold transition cursor-pointer ${
                 activeTab === 'plan'
                   ? 'bg-[#1c202a] text-white shadow-sm'
@@ -159,7 +153,7 @@ function MyPlanContent () {
             </button>
             <button
               type='button'
-              onClick={() => setActiveTab('saved')}
+              onClick={() => handleTabChange('saved')}
               className={`rounded-lg px-5 py-2 text-xs font-bold transition cursor-pointer ${
                 activeTab === 'saved'
                   ? 'bg-[#1c202a] text-white shadow-sm'
@@ -225,7 +219,8 @@ function MyPlanContent () {
         </div>
 
         {isLoading ? (
-          <div className='flex min-h-[300px] items-center justify-center'>
+          <div className='flex min-h-[300px] flex-col items-center justify-center gap-3 rounded-2xl border border-neutral-800/60 bg-[#13161f]/40 p-8'>
+            <div className='h-8 w-8 animate-spin rounded-full border-2 border-neutral-700 border-t-[#ccff00]' />
             <p className='text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-400 animate-pulse'>
               Loading workouts…
             </p>
