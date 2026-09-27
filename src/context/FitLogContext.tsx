@@ -26,7 +26,7 @@ interface FitLogContextType {
   savedWorkouts: Workout[]
   addToPlan: (workout: Workout) => void
   saveForLater: (workout: Workout) => void
-  removeFromPlan: (id: number | string) => void
+  removeFromPlan: (id: string | number, silent?: boolean) => void;
   removeFromSaved: (id: number | string) => void
 }
 
@@ -86,11 +86,16 @@ export function FitLogProvider ({ children }: { children: React.ReactNode }) {
     toast.success(`Saved "${workout.name}" for later!`)
   }
 
-  const removeFromPlan = (id: number | string) => {
-    const updated = todayPlan.filter(item => String(item.id) !== String(id))
-    setTodayPlan(updated)
-    localStorage.setItem('fitlog_today_plan', JSON.stringify(updated))
-    toast.info("Removed from today's plan")
+  const removeFromPlan = (id: string | number, silent: boolean = false) => {
+    setTodayPlan(prev => {
+      const updated = prev.filter(item => item.id !== id)
+      localStorage.setItem('todayPlan', JSON.stringify(updated))
+      return updated
+    })
+
+    if (!silent) {
+      toast.info("Removed from today's plan")
+    }
   }
 
   const removeFromSaved = (id: number | string) => {

@@ -81,8 +81,8 @@ function MyPlanContent () {
   }, [currentTabList, sortBy])
 
   const handleMarkAsDone = (workout: Workout) => {
-    removeFromPlan(workout.id)
-    toast.success(`Completed "${workout.name}"! Great work!`)
+    removeFromPlan(workout.id, true)
+    toast.success(`Completed "${workout.name}"! Well Done!`)
   }
 
   const handleRemove = (workout: Workout) => {
