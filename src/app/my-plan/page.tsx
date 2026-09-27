@@ -107,43 +107,43 @@ function MyPlanContent () {
           </p>
         </div>
 
-        <div className='mb-8 overflow-hidden rounded-2xl border border-neutral-800/80 bg-[#13161f] p-6 sm:p-8'>
-          <div className='grid grid-cols-1 gap-6 divide-y divide-neutral-800 md:grid-cols-3 md:gap-0 md:divide-y-0 md:divide-x'>
-            <div className='flex flex-col md:px-6 first:pl-0'>
-              <span className='text-xs font-semibold uppercase tracking-wider text-neutral-400'>
+        <div className='mb-8 overflow-hidden rounded-2xl border border-neutral-800/80 bg-[#13161f] p-4 sm:p-6 md:p-8'>
+          <div className='grid grid-cols-3 divide-x divide-neutral-800'>
+            <div className='flex flex-col items-center justify-center px-1 sm:px-6 sm:items-start'>
+              <span className='text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-neutral-400'>
                 Exercises
               </span>
-              <span className='mt-2 text-4xl sm:text-5xl font-black text-[#ccff00]'>
+              <span className='mt-1 sm:mt-2 text-2xl sm:text-4xl md:text-5xl font-black text-[#ccff00]'>
                 {totalExercises}
               </span>
             </div>
 
-            <div className='pt-4 flex flex-col md:pt-0 md:px-8'>
-              <span className='text-xs font-semibold uppercase tracking-wider text-neutral-400'>
+            <div className='flex flex-col items-center justify-center px-1 sm:px-6 md:px-8 sm:items-start'>
+              <span className='text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-neutral-400'>
                 Minutes
               </span>
-              <span className='mt-2 text-4xl sm:text-5xl font-black text-white'>
+              <span className='mt-1 sm:mt-2 text-2xl sm:text-4xl md:text-5xl font-black text-white'>
                 {totalMinutes}
               </span>
             </div>
 
-            <div className='pt-4 flex flex-col md:pt-0 md:px-8'>
-              <span className='text-xs font-semibold uppercase tracking-wider text-neutral-400'>
+            <div className='flex flex-col items-center justify-center px-1 sm:px-6 md:px-8 sm:items-start'>
+              <span className='text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-neutral-400'>
                 Calories
               </span>
-              <span className='mt-2 text-4xl sm:text-5xl font-black text-white'>
+              <span className='mt-1 sm:mt-2 text-2xl sm:text-4xl md:text-5xl font-black text-white'>
                 {totalCalories}
               </span>
             </div>
           </div>
         </div>
 
-        <div className='mb-6 flex flex-wrap items-end justify-between gap-4'>
+        <div className='mb-6 flex items-center justify-between gap-2'>
           <div className='inline-flex rounded-xl border border-neutral-800 bg-[#13161f] p-1'>
             <button
               type='button'
               onClick={() => handleTabChange('plan')}
-              className={`rounded-lg px-5 py-2 text-xs font-bold transition cursor-pointer ${
+              className={`rounded-lg px-2.5 sm:px-5 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold transition cursor-pointer ${
                 activeTab === 'plan'
                   ? 'bg-[#1c202a] text-white shadow-sm'
                   : 'text-neutral-400 hover:text-white'
@@ -154,7 +154,7 @@ function MyPlanContent () {
             <button
               type='button'
               onClick={() => handleTabChange('saved')}
-              className={`rounded-lg px-5 py-2 text-xs font-bold transition cursor-pointer ${
+              className={`rounded-lg px-2.5 sm:px-5 py-1.5 sm:py-2 text-[11px] sm:text-xs font-bold transition cursor-pointer ${
                 activeTab === 'saved'
                   ? 'bg-[#1c202a] text-white shadow-sm'
                   : 'text-neutral-400 hover:text-white'
@@ -164,57 +164,51 @@ function MyPlanContent () {
             </button>
           </div>
 
-          <div className='flex flex-col items-end'>
-            <span className='text-xs text-neutral-400 mb-1.5 self-start'>
-              Sort By
-            </span>
-
-            <div className='dropdown dropdown-end'>
-              <div
-                tabIndex={0}
-                role='button'
-                className='flex items-center justify-between w-44 rounded-full border border-neutral-400/60 bg-[#13161f] px-4 py-2 text-xs font-semibold text-white hover:border-neutral-200 transition cursor-pointer'
-              >
-                <span>{sortBy}</span>
-                <FaChevronDown className='text-[10px] text-neutral-400' />
-              </div>
-
-              <ul
-                tabIndex={0}
-                className='dropdown-content menu z-20 mt-1.5 w-44 rounded-2xl border border-neutral-800 bg-[#181b24] p-1.5 text-xs shadow-2xl space-y-0.5'
-              >
-                {sortOptions.map(option => {
-                  const isSelected = sortBy === option
-                  return (
-                    <li key={option}>
-                      <button
-                        type='button'
-                        onClick={() => {
-                          setSortBy(option)
-                          if (document.activeElement instanceof HTMLElement) {
-                            document.activeElement.blur()
-                          }
-                        }}
-                        className={`flex items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition cursor-pointer ${
-                          isSelected
-                            ? 'bg-[#222733] font-bold text-white'
-                            : 'text-neutral-300 hover:bg-neutral-800/70 hover:text-white'
-                        }`}
-                      >
-                        <span className='flex items-center gap-2'>
-                          {isSelected && (
-                            <FaCheck className='text-[10px] text-white' />
-                          )}
-                          <span className={!isSelected ? 'pl-4' : ''}>
-                            {option}
-                          </span>
-                        </span>
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
+          <div className='dropdown dropdown-end'>
+            <div
+              tabIndex={0}
+              role='button'
+              className='flex items-center justify-between gap-2 rounded-xl sm:rounded-full border border-neutral-700/80 bg-[#13161f] px-2.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-semibold text-white hover:border-neutral-500 transition cursor-pointer min-w-[95px] sm:min-w-[130px]'
+            >
+              <span>{sortBy}</span>
+              <FaChevronDown className='text-[9px] sm:text-[10px] text-neutral-400 shrink-0' />
             </div>
+
+            <ul
+              tabIndex={0}
+              className='dropdown-content menu z-20 mt-1.5 w-36 sm:w-44 rounded-2xl border border-neutral-800 bg-[#181b24] p-1.5 text-[11px] sm:text-xs shadow-2xl space-y-0.5'
+            >
+              {sortOptions.map(option => {
+                const isSelected = sortBy === option
+                return (
+                  <li key={option}>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        setSortBy(option)
+                        if (document.activeElement instanceof HTMLElement) {
+                          document.activeElement.blur()
+                        }
+                      }}
+                      className={`flex items-center justify-between rounded-xl px-2.5 sm:px-3 py-1.5 sm:py-2 text-[11px] sm:text-xs font-medium transition cursor-pointer ${
+                        isSelected
+                          ? 'bg-[#222733] font-bold text-white'
+                          : 'text-neutral-300 hover:bg-neutral-800/70 hover:text-white'
+                      }`}
+                    >
+                      <span className='flex items-center gap-1.5 sm:gap-2'>
+                        {isSelected && (
+                          <FaCheck className='text-[9px] sm:text-[10px] text-white' />
+                        )}
+                        <span className={!isSelected ? 'pl-3 sm:pl-4' : ''}>
+                          {option}
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
           </div>
         </div>
 
